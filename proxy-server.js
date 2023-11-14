@@ -8,6 +8,12 @@ app.use('/', async (req, res) => {
     try {
         const response = await fetch(url);
         const data = await response.json();
+
+        // Adicione cabeçalhos CORS
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
         res.json(data);
     } catch (error) {
         console.error('Error fetching data:', error);
